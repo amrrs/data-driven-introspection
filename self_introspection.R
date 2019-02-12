@@ -241,3 +241,4 @@ cowplot::plot_grid(y1,y2,y3, ncol = 3, scale = 0.7, vjust = 0, label_size = 8)
 
 
 #usethis::use_mit_license("Github @amrrs")
+#usethis::use_readme_md()
