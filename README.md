@@ -5,5 +5,5 @@ This is my attempt to mine my own App usage data from Google Account to see if i
 And I found something - kind of! 
 
 
-![youtube_usage](yt.gif)
+![youtube_usage](yt2.gif)
 
