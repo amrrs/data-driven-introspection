@@ -2,17 +2,25 @@ library(jsonlite)
 library(tidyverse)
 library(lubridate)
 library(ggrepel)
-#library(viridis)
+library(viridis)
 library(gganimate)
 library(cowplot)
+library(ggthemes)
 
 me <- jsonlite::fromJSON("MyActivity.json")
+
+# converting date-time in string to date-time format along with time-zone conversion
 
 me$time_ist <- with_tz(parse_datetime(me$time),"Asia/Calcutta") 
 
 # remove incomplete years and irrelevant years too - Kept 2019 to see just January if required
 
 me <- filter(me, year(time_ist) %in% c(2017,2018,2019))
+
+
+# Sample
+
+tibble::tibble(head(me))
 
 
 # Overall Daily usage trend
@@ -33,9 +41,10 @@ labs(
     x = "Months",
     y = "# of Interactions"
   ) +
-ggthemes::theme_hc(style = "darkunica") +
-theme(axis.text.x=element_text(angle=60, hjust=1))+
-theme(legend.position="none")
+
+  theme(axis.text.x=element_text(angle=60, hjust=1))+
+  theme(legend.position="none") +
+  ggthemes::theme_hc(style  = "darkunica") 
 
 # Month-wise usage trend
 
@@ -105,7 +114,7 @@ me %>%
     x = "Weekday / Weekend",
     y = "# of Interactions"
   ) +
-  ggthemes::theme_hc(style = "darkunica")
+  ggthemes::theme_excel_new()
 
 
 # Messaging Usage
