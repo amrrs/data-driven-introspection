@@ -4,7 +4,7 @@ This is my attempt to mine my own App usage data from Google Account to see if i
 
 And I found something - kind of! 
 
-# How to replicate this result for yourself?
+### How to replicate this result for yourself?
 
 - Primary guide is this [blogpost](https://datascienceplus.com/data-driven-introspection-of-my-android-mobile-usage-in-r/) 
 - Clone/Download this [repo](https://github.com/amrrs/data-driven-introspection)
