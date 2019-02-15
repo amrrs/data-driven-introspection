@@ -8,7 +8,7 @@ And I found something - kind of!
 
 - Primary guide is this [blogpost](https://datascienceplus.com/data-driven-introspection-of-my-android-mobile-usage-in-r/) 
 - Clone/Download this [repo](https://github.com/amrrs/data-driven-introspection)
-- Open `android.Proj` with RStudio
+- Open `android.Rproj` with RStudio
 - Edit the file path and name in the `self_introspection.R` script to refer your input JSON file (that you downloaded from Google)
 - In the same code, Adjust years accoringly in the section where Data is filtered
 - Run the code
