@@ -104,7 +104,7 @@ me %>%
   mutate(what_day = ifelse(weekday %in% c("Sat","Sun"),"Weekend","Weekday")) %>% 
   filter(year %in% c(2017,2018)) %>% 
   group_by(year,what_day) %>% 
-  summarize(n = sum(n)) %>% 
+  summarize(n = mean(n)) %>% 
   ggplot(aes(fct_relevel(what_day, c("Weekday","Weekend")),
              n, group = year, color = year)) + 
   geom_line() +
@@ -112,7 +112,7 @@ me %>%
     title = "Weekday vs Weekend usage",
     subtitle = "For two years",
     x = "Weekday / Weekend",
-    y = "# of Interactions"
+    y = "Avg. count of Interactions"
   ) +
   ggthemes::theme_excel_new()
 
