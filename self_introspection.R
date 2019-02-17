@@ -30,7 +30,7 @@ tibble::tibble(head(me))
 
 me %>%
 filter(!str_detect(header,"com.")) %>%
-filter(as.Date(time_ist) >= as.Date("2017-01-01")) %>% 
+#filter(as.Date(time_ist) >= as.Date("2017-01-01")) %>% 
 group_by(Date = as.Date(time_ist)) %>%
 count(n = n()) %>%
 ggplot(aes(Date,n, group = 1, color = "red")) +
