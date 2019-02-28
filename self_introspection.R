@@ -6,12 +6,15 @@ library(viridis)
 library(gganimate)
 library(cowplot)
 library(ggthemes)
+library(magrittr)
+library(bindrcpp)
+library(dplyr)
 
 me <- jsonlite::fromJSON("MyActivity.json")
 
 # converting date-time in string to date-time format along with time-zone conversion
-
-me$time_ist <- with_tz(parse_datetime(me$time),"Asia/Calcutta") 
+# me$time_ist <- with_tz(parse_datetime(me$time),"Asia/Calcutta")
+me$time_ist <- parse_date_time(me$time, "Ymd HMS", tz = "CET")
 
 # remove incomplete years and irrelevant years too - Kept 2019 to see just January if required
 
@@ -27,7 +30,7 @@ tibble::tibble(head(me))
 
 me %>%
 filter(!str_detect(header,"com.")) %>%
-filter(as.Date(time_ist) >= as.Date("2017-01-01")) %>% 
+#filter(as.Date(time_ist) >= as.Date("2017-01-01")) %>% 
 group_by(Date = as.Date(time_ist)) %>%
 count(n = n()) %>%
 ggplot(aes(Date,n, group = 1, color = "red")) +
@@ -246,7 +249,7 @@ me_count %>%
     x = "App name"
   ) -> y3
 
-cowplot::plot_grid(y1,y2,y3, ncol = 3, scale = 0.7, vjust = 0, label_size = 8)
+cowplot::plot_grid(y1,y2,y3, vjust = 0, label_size = 8)
 
 
 #usethis::use_mit_license("Github @amrrs")
